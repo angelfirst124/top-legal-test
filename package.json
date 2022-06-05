@@ -34,9 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
-    "fix": "eslint --ext .js,.jsx,.ts,.tsx  --fix ./",
-    "relay": "relay-compiler --schema schema.graphql --src src --extensions tsx --language typescript",
-    "cypress:open": "cypress open"
+    "fix": "eslint --ext .js,.jsx,.ts,.tsx  --fix ./"
   },
   "browserslist": {
     "production": [
@@ -52,15 +50,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
-    "@types/material-ui": "^0.21.12",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
     "@types/react-helmet": "^6.1.4",
-    "@types/react-highlight-words": "^0.16.4",
-    "@types/react-redux": "^7.1.20",
-    "@types/react-relay": "^11.0.2",
     "@types/react-router-dom": "^5.3.2",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
-    "cypress": "^8.7.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-import-resolver-typescript": "^2.5.0",
@@ -72,6 +67,5 @@
     "graphql-cli": "4.1.0",
     "relay-compiler": "^12.0.0",
     "relay-compiler-language-typescript": "^14.2.1"
-  },
-  "proxy": "https://api.flexhire.com/api/v2"
+  }
 }

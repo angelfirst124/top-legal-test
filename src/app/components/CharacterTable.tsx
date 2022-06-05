@@ -2,7 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 // import type { TablePaginationConfig } from 'antd/lib/table';
 import type { ColumnType, TableProps } from 'antd/lib/table';
 import { SearchOutlined } from '@ant-design/icons';
-import type { FilterConfirmProps } from 'antd/lib/table/interface';
+import type {
+  FilterConfirmProps,
+  FilterValue,
+  Key,
+} from 'antd/lib/table/interface';
 import type { InputRef } from 'antd';
 import {
   Table,
@@ -31,12 +35,12 @@ const DashBoardTable: React.FC<ITable> = (props: ITable) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modifiedColumns, setModifiedColumns] = useState<ICharactersTable[]>();
 
-  const onChange: TableProps<ICharactersTable>['onChange'] = (newPagination, filters:any) => {
-    const object:any = {};
+  const onChange: TableProps<ICharactersTable>['onChange'] = (newPagination, filters: Record<string, FilterValue | null>) => {
+    const object: {[key: string]: boolean | Key} = {};
     Object.keys(filters).forEach((key) => {
-      if (filters[key] !== null) {
+      if (filters[key]) {
         // eslint-disable-next-line
-        object[key] = filters[key][0];
+        object[key] = filters[key]![0];
       }
     });
     setFilter(object);
@@ -126,7 +130,8 @@ const DashBoardTable: React.FC<ITable> = (props: ITable) => {
   });
 
   useEffect(() => {
-    const tempColumns:ICharactersTable[] = [];
+    const tempColumns: ICharactersTable[] = [];
+    // eslint-disable-next-line
     columns.forEach((column: any, index: number) => {
       const numbers = [1, 4, 5, 6, 7];
       if (numbers.indexOf(index) !== -1) {

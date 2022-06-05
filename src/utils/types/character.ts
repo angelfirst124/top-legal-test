@@ -1,4 +1,4 @@
-import { ILocation, IEpisode } from "utils/types";
+import { ILocation, IEpisode } from 'utils/types';
 
 export type ICharacter = {
   id: number;
@@ -35,9 +35,8 @@ export type IFilterCharacter = {
 }
 
 export type ICharacterModal = {
-  isModalVisible: Boolean,
+  isModalVisible: boolean,
   handleOk: () => void,
   handlCancel: () => void,
   id: string,
 }
-

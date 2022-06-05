@@ -1,10 +1,10 @@
 export type ILocation = {
   id: ID
-  name: String
-  type: String
-  dimension: String
+  name: string
+  type: string
+  dimension: string
   residents: [Character]!
-  created: String
+  created: string
 }
 
 export type ILocationTable = {
@@ -14,4 +14,3 @@ export type ILocationTable = {
   dimension: string;
   created: Date;
 }
-

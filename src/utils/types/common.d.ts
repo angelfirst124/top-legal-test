@@ -1,10 +1,12 @@
+import type { TablePaginationConfig } from 'antd/lib/table';
+
 export interface ITable {
-	moreLoading: any,
-	pagination: any,
+	moreLoading: boolean,
+	pagination: TablePaginationConfig,
 	data: any,
-	filter: any,
+	filter: IFilter,
 	setFilter: (filter: any) => void,
-	setPagination: (newPagination: any) => void,
+	setPagination: (newPagination: TablePaginationConfig) => void,
 }
 
 export interface IModal {
@@ -12,4 +14,8 @@ export interface IModal {
 	handleOk: () => void,
 	handleCancel: () => void,
 	id: string,
+}
+
+export interface IFilter {
+	[key: string]: string[];
 }

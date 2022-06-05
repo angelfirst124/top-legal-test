@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { ColumnType, TableProps } from 'antd/lib/table';
 import { SearchOutlined } from '@ant-design/icons';
-import type { FilterConfirmProps } from 'antd/lib/table/interface';
+import type { FilterConfirmProps, FilterValue, Key } from 'antd/lib/table/interface';
 import type { InputRef } from 'antd';
 import {
   Table,
@@ -30,12 +30,12 @@ const EpisodeTable: React.FC<ITable> = (props: ITable) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modifiedColumns, setModifiedColumns] = useState<IEpisodeTable[]>();
 
-  const onChange: TableProps<IEpisodeTable>['onChange'] = (newPagination, filters:any) => {
-    const object:any = {};
+  const onChange: TableProps<IEpisodeTable>['onChange'] = (newPagination, filters: Record<string, FilterValue | null>) => {
+    const object: {[key: string]: boolean | Key} = {};
     Object.keys(filters).forEach((key) => {
-      if (filters[key] !== null) {
+      if (filters[key]) {
         // eslint-disable-next-line
-        object[key] = filters[key][0];
+        object[key] = filters[key]![0];
       }
     });
     setFilter(object);
@@ -126,6 +126,7 @@ const EpisodeTable: React.FC<ITable> = (props: ITable) => {
 
   useEffect(() => {
     const tempColumns:IEpisodeTable[] = [];
+    // eslint-disable-next-line
     columns.forEach((column:any, index:number) => {
       const numbers = [0, 1];
       if (numbers.indexOf(index) !== -1) {
