@@ -9,6 +9,7 @@ import AppBar from './components/AppBar';
 const history = createBrowserHistory();
 
 const App: React.FC = () => (
+
   <Router history={history}>
     <BrowserRouter>
       <AppBar />
