@@ -1,10 +1,5 @@
 # Flexhire Code Test
 
-## Author
-
-### Name: Denis
-### Email: angelfirst930124@gmail.com
-
 
 ## Description
 
